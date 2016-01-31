@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:strava]
 
+  has_many :challenges, dependent: :destroy
+
   def self.from_omniauth(auth)
     # byebug
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

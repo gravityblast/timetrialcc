@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131045706) do
+ActiveRecord::Schema.define(version: 20160131182149) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
+  create_table "challenges", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.integer  "user_id",                      null: false
+    t.string   "name",                         null: false
+    t.integer  "segment_id",                   null: false
+    t.string   "segment_name",                 null: false
+    t.datetime "end_time",                     null: false
+    t.boolean  "calculated",   default: false, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["calculated", "end_time"], name: "index_challenges_on_calculated_and_end_time", using: :btree
+    t.index ["user_id"], name: "index_challenges_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",               default: "", null: false
@@ -22,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160131045706) do
     t.datetime "updated_at",                       null: false
     t.string   "provider"
     t.string   "uid"
-    t.index ["uid"], name: "index_users_on_uid"
+    t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
 end
