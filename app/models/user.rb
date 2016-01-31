@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:strava]
 
-  has_many :challenges, dependent: :destroy
+  has_many :owned_challenges, dependent: :destroy
+  has_many :user_challenges,  dependent: :destroy
+  has_many :challenges,       through: :user_challenges
 
   def self.from_omniauth(auth)
     # byebug
@@ -16,5 +18,13 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.profile_picture_url = auth.info.profile
     end
+  end
+
+  def join challenge
+    unless challenge.is_a? Challenge
+      raise TypeError.new('challenge must be a Challenge object')
+    end
+
+    challenge.add self
   end
 end

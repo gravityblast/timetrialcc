@@ -1,3 +1,13 @@
+Fabricator :user_challenge do
+  user do
+    Fabricate :user
+  end
+
+  challenge do
+    Fabricate :challenge
+  end
+end
+
 Fabricator :challenge do
   user do
     Fabricate :user
