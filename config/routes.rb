@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'challenges/new'
-
-  get 'challenges/show'
-
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
@@ -15,4 +11,6 @@ Rails.application.routes.draw do
   root to: 'home#landing'
 
   get '/home', to: 'home#show', as: :home
+
+  resources :challenges
 end
