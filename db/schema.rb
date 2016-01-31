@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160131193010) do
     t.datetime "updated_at",                       null: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "access_token"
     t.index ["uid"], name: "index_users_on_uid", using: :btree
   end
 
