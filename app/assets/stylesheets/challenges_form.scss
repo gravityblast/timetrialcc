@@ -1,0 +1,57 @@
+body.c-challenges.a-new,
+body.c-challenges.a-create {
+  .map-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+
+    .map-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    #map-search {
+      width: 300px;
+      height: 34px;
+      margin: 10px;
+      background-color: #FFF;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+      border-radius: 4px;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      border: 1px solid #f0f0f0;
+      padding: 0 0.5em;
+    }
+
+    .map-zoom {
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .map-zoom > div:first-child {
+      top: 5px;
+      right: 5px;
+      border-radius: 4px 0 0 4px;
+      border-right: none;
+    }
+
+    .map-zoom > div {
+      display: inline-block;
+      width: 34px;
+      height: 34px;
+      background-color: #FFF;
+      text-align: center;
+      line-height: 34px;
+      font-size: 14px;
+      border: 1px solid #f0f0f0;
+    }
+  }
+}
+
