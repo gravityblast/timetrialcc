@@ -8,8 +8,6 @@ body.c-home.a-landing {
   background-size: cover;
 
   .navbar {
-    color: #ffff;
-    background-color: transparent;
     border: none;
   }
 
@@ -20,7 +18,7 @@ body.c-home.a-landing {
   .navbar-default .navbar-brand {
     background: transparent;
     color: #fff;
-    text-shadow: 2px 2px #1a1a1a;
+    text-shadow: 2px 1px #1a1a1a;
   }
 
   .welcome {
@@ -29,8 +27,6 @@ body.c-home.a-landing {
       font-size: 40px;
       letter-spacing: -0.02em;
       line-height: 1.2em;
-      -webkit-font-smoothing: antialiased;
-      font-smoothing: antialiased;
       font-weight: 300;
       text-rendering: optimizeLegibility;
       text-shadow: 2px 2px #1a1a1a;

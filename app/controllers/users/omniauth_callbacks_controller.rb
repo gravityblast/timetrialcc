@@ -1,4 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_action :authenticate_strava_user!
+  skip_before_action :redirect_to_previous_attempted_url
+
   def strava
     user = User.from_omniauth request.env['omniauth.auth']
 

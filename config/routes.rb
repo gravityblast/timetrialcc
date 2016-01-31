@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   end
 
   root to: 'home#landing'
+
+  get '/home', to: 'home#show', as: :home
 end
