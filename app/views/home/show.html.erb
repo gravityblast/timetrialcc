@@ -1,8 +1,0 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
-
-<% if current_user -%>
-  Hello <%= current_user.name %> <%= link_to 'Logout', destroy_user_session_path%>
-<% else -%>
-  <%= link_to 'Login', user_omniauth_authorize_path(provider: :strava) %>
-<% end -%>
