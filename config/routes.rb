@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'challenges/new'
+
+  get 'challenges/show'
+
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
