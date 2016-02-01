@@ -1,5 +1,9 @@
 <div class="col-xs-12">
   <h1><%= @challenge.name %></h1>
+
+  <p>
+    Share this URL: <strong><%= challenge_url @challenge %></strong>
+  </p>
 </div>
 
 <div class="step step-segment" data-widget="challenge-map-detail" data-widget-polyline="<%= @challenge.segment_polyline %>" data-widget-start_latlng="<%= @challenge.segment_start_latlng %>" data-widget-end_latlng="<%= @challenge.segment_end_latlng %>">
@@ -13,16 +17,21 @@
   <div class="col-xs-12 col-md-4">
     <h3 class="sidebar-title"><%= @challenge.segment_name %></h3>
 
-    <ul>
+    <ul class="members">
       <% @challenge.users.each do |user| -%>
-        <li>
-          <%= user.name %>
+        <li class="user">
+          <img src="<%= user.profile_picture_url %>" class="avatar pull-left" />
+          <span class="name"><%= user.name %></span>
+          <span class="time">Time: --:--</span>
+          <hr />
         </li>
       <% end %>
     </ul>
 
-    <p>
-      <%= link_to 'Join Challenge', join_challenge_path(@challenge), method: :put, class: 'btn btn-primary btn-lg' %>
-    </p>
+    <% if !current_user || !current_user.joined(@challenge) %>
+      <p>
+        <%= link_to 'Join Challenge', join_challenge_path(@challenge), method: :put, class: 'btn btn-primary btn-lg' %>
+      </p>
+    <% end -%>
   </div>
 </div>

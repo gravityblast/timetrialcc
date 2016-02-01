@@ -8,5 +8,6 @@ class HomeController < ApplicationController
   end
 
   def show
+    @challenges = current_user.challenges
   end
 end

@@ -1,0 +1,24 @@
+body.c-challenges.a-show {
+  .members {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    .user {
+      .avatar {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      .name {
+        display: block;
+        font-weight: bold;
+      }
+      .time {
+        font-size: 12px;
+        color: #777;
+      }
+    }
+  }
+}

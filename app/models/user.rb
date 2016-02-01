@@ -22,6 +22,14 @@ class User < ApplicationRecord
     challenge.add self
   end
 
+  def joined challenge
+    unless challenge.is_a? Challenge
+      raise TypeError.new('challenge must be a Challenge object')
+    end
+
+    user_challenges.where(challenge_id: challenge.id).exists?
+  end
+
   def strava_client
     MiniStrava::Client.new access_token
   end

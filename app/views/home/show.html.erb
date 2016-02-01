@@ -5,5 +5,13 @@
 
   <div class="col-xs-12 col-md-4">
     <h2>Challenges</h2>
+
+    <ul>
+    <% @challenges.each do |challenge| -%>
+      <li>
+        <%= link_to challenge.name, challenge_path(challenge)%>
+      </li>
+    <% end %>
+    </ul>
   </div>
 </div>
