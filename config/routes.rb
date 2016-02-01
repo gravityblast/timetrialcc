@@ -12,5 +12,10 @@ Rails.application.routes.draw do
 
   get '/home', to: 'home#show', as: :home
 
-  resources :challenges
+  resources :challenges do
+    collection do
+      get :new_from_segment
+      get :search_segments
+    end
+  end
 end

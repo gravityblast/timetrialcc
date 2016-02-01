@@ -1,2 +1,24 @@
-<h1>Challenges#show</h1>
-<p>Find me in app/views/challenges/show.html.erb</p>
+<div class="col-xs-12">
+  <h1><%= @challenge.name %></h1>
+</div>
+
+<div class="step step-segment" data-widget="challenge-map-detail" data-widget-polyline="<%= @challenge.segment_polyline %>" data-widget-start_latlng="<%= @challenge.segment_start_latlng %>" data-widget-end_latlng="<%= @challenge.segment_end_latlng %>">
+  <div class="col-xs-12 col-md-8">
+    <div class="map-container">
+      <div class="map-content">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <h3 class="sidebar-title"><%= @challenge.segment_name %></h3>
+
+    <ul>
+      <% @challenge.users.each do |user| -%>
+        <li>
+          <%= user.name %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

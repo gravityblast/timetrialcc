@@ -7,8 +7,8 @@ class NewChallengeMapWidget extends BaseWidget
 
   initMap: ->
     @map = new google.maps.Map document.getElementById('map'),
-      center:    new google.maps.LatLng(51.54095046017735, -0.10836273193355783),
-      zoom:      12,
+      center:    new google.maps.LatLng(51.531447323113106, -0.1547113037108816),
+      zoom:      14,
       maxZoom:   17,
       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -19,6 +19,7 @@ class NewChallengeMapWidget extends BaseWidget
           { visibility: 'off' }
         ]
       }]
+    window.map = @map
 
   initSearchField: ->
     mapSearch = document.getElementById "map-search"
@@ -56,7 +57,14 @@ class NewChallengeMapWidget extends BaseWidget
     , 500
 
   boundsChangedHandler: (ne, sw) ->
-    console.log "Change: #{ne} #{sw}"
+    el = $('.results-container', @element)
+    url = "#{@options['search-url']}?bounds=#{sw.lat()},#{sw.lng()},#{ne.lat()},#{ne.lng()}"
+    loading = $('.results-loading')
+    el.hide()
+    loading.show()
+    el.load url, null, =>
+      loading.hide()
+      el.show()
 
   ZoomControl = (controlDiv, map) ->
     outBtn = $ '<div/>'

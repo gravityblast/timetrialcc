@@ -5,11 +5,19 @@ body {
 
 .navbar {
   color: #ffff;
-  background-color: transparent;
+  background-color: #fff;
 }
 
 h1, h2, h3, h4 {
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
   font-weight: 300;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
 }

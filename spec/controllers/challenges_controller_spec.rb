@@ -6,7 +6,6 @@ RSpec.describe ChallengesController, :type => :controller do
       it 'redirects to login' do
         get :new
         expect(response).to redirect_to(user_omniauth_authorize_path(provider: :strava))
-        # expect(response).to have_http_status(:success)
       end
     end
 

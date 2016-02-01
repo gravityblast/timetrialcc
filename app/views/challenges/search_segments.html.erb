@@ -1,0 +1,14 @@
+<% if @segments.any? -%>
+<ul class="items">
+  <% @segments.each do |segment| %>
+  <li class="item">
+    <strong class="name"><%= segment.name %></strong>
+    <span class="distance"><%= segment.distance %>m</span>
+    <a href="<%= new_from_segment_challenges_path sid: segment.id %>" class="btn btn-primary btn-sma">Use this segment</a>
+    <hr />
+  </li>
+  <% end -%>
+</ul>
+<% else -%>
+  <p>No results</p>
+<% end -%>

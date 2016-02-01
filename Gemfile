@@ -25,7 +25,7 @@ gem 'omniauth-strava', git: 'git@github.com:pilu/omniauth-strava.git'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
-gem 'mini_strava', '>= 0.2.1'
+gem 'mini_strava', '>= 0.3.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

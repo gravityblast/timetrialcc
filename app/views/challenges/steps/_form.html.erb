@@ -1,0 +1,38 @@
+<div class="step step-segment">
+  <div class="col-xs-12">
+    <%= form_for :challenge, url: challenges_path do |f| %>
+      <% if @challenge.errors.any? -%>
+        <div id="error_explanation">
+          <h2><%= pluralize(@challenge.errors.count, 'error') %> prohibited this challenge from being saved:</h2>
+          <ul>
+            <% @challenge.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end -%>
+
+      <%= f.hidden_field :segment_id %>
+      <%= f.hidden_field :segment_name %>
+      <%= f.hidden_field :segment_polyline %>
+      <%= f.hidden_field :segment_start_latlng %>
+      <%= f.hidden_field :segment_end_latlng %>
+
+      <div class="form-group">
+        <%= f.label :name, 'Give a name to this challenge' %>
+        <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Name...' %>
+      </div>
+
+      <div class="form-group" data-widget="date-picker">
+        <%= label_tag :end_time_tmp, 'Set an ending date for this challenge' %>
+        <%= text_field_tag :end_time_tmp, '', class: 'form-control input-lg date-picker-field' %>
+        <%= f.hidden_field :end_time, class: 'timestamp-field' %>
+      </div>
+
+
+      <%= f.submit 'Create', class: 'btn btn-primary btn-lg', data: { disable_with: 'Creating...'}%>
+
+    <% end -%>
+  </div>
+</div>
+

@@ -26,4 +26,9 @@ class Challenge < ApplicationRecord
       user_challenges.create user: user
     end
   end
+
+  def end_time_formatted
+    return '' unless end_time.is_a?(Time)
+    end_time.strftime '%d/%m/%Y %H:%S %p'
+  end
 end

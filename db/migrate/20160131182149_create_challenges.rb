@@ -7,7 +7,7 @@ class CreateChallenges < ActiveRecord::Migration[5.0]
       t.string :name,         null: false
       t.integer :segment_id,  null: false
       t.string :segment_name, null: false
-      t.datetime :end_time,   null: false
+      t.timestamp :end_time,   null: false
       t.boolean :calculated,  null: false, default: false
 
       t.timestamps
