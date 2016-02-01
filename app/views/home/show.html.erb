@@ -3,13 +3,17 @@
     <h2>Activities</h2>
 
     <ul class="items">
-      <% @activities.each do |activity| -%>
-        <li class="item">
-          <div class="clearfix">
-            <%= render partial: "home/activities/#{activity.action}", locals: { activity: activity } %>
-          </div>
-          <hr />
-        </li>
+      <% if @activities.any? -%>
+        <% @activities.each do |activity| -%>
+          <li class="item">
+            <div class="clearfix">
+              <%= render partial: "home/activities/#{activity.action}", locals: { activity: activity } %>
+            </div>
+            <hr />
+          </li>
+        <% end %>
+      <% else %>
+        <p>No activities yet. <%= link_to 'Start a new challenge and invite your friends', new_challenge_path %></p>
       <% end %>
     </ul>
 
@@ -20,23 +24,27 @@
     <h2>Challenges</h2>
 
     <ul class="items">
-      <% @challenges.each do |challenge| -%>
-        <li class="item">
-          <div class="clearfix">
-            <div class="left">
-              <img src="<%= challenge.user.profile_picture_url  %>" class="avatar" />
+      <% if @challenges.any? -%>
+        <% @challenges.each do |challenge| -%>
+          <li class="item">
+            <div class="clearfix">
+              <div class="left">
+                <img src="<%= challenge.user.profile_picture_url  %>" class="avatar" />
+              </div>
+              <div class="right">
+                <span class="date">
+                  ending on <strong><%= l challenge.end_time, format: :short %></strong>
+                </span>
+                <p class="description">
+                  <span class="challenge"><%= link_to challenge.name, challenge_path(challenge)%></span>
+                </p>
+              </div>
             </div>
-            <div class="right">
-              <span class="date">
-                ending on <strong><%= l challenge.created_at, format: :short %></strong>
-              </span>
-              <p class="description">
-                <span class="challenge"><%= link_to challenge.name, challenge_path(challenge)%></span>
-              </p>
-            </div>
-          </div>
-          <hr />
-        </li>
+            <hr />
+          </li>
+        <% end %>
+      <% else %>
+        <p>No activities yet. <%= link_to 'Start a new challenge and invite your friends', new_challenge_path %></p>
       <% end %>
     </ul>
   </div>

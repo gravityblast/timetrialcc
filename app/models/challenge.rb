@@ -32,4 +32,8 @@ class Challenge < ApplicationRecord
     return '' unless end_time.is_a?(Time)
     end_time.strftime '%d/%m/%Y %H:%S %p'
   end
+
+  def end_time_timestamp
+    end_time ? end_time.to_f * 1000 : 0
+  end
 end
