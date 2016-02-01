@@ -20,19 +20,20 @@ ActiveRecord::Schema.define(version: 20160201153425) do
   create_table "activities", force: :cascade do |t|
     t.integer  "event_id"
     t.string   "event_name"
-    t.integer  "recipient_id"
+    t.uuid     "recipient_id"
     t.string   "originator_type"
-    t.integer  "originator_id"
+    t.uuid     "originator_id"
     t.string   "subject_type"
-    t.integer  "subject_id"
+    t.uuid     "subject_id"
     t.datetime "event_created_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["event_created_at"], name: "index_activities_on_event_created_at", using: :btree
     t.index ["recipient_id"], name: "index_activities_on_recipient_id", using: :btree
   end
 
   create_table "challenges", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.integer  "user_id",                              null: false
+    t.uuid     "user_id",                              null: false
     t.string   "name",                                 null: false
     t.integer  "segment_id",                           null: false
     t.string   "segment_name",                         null: false
@@ -64,14 +65,14 @@ ActiveRecord::Schema.define(version: 20160201153425) do
     t.index ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
   end
 
-  create_table "user_challenges", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "user_challenges", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.uuid     "user_id"
     t.uuid     "challenge_id"
     t.datetime "created_at"
     t.index ["user_id", "challenge_id"], name: "index_user_challenges_on_user_id_and_challenge_id", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",               default: "", null: false
     t.string   "encrypted_password",  default: "", null: false
     t.string   "name"

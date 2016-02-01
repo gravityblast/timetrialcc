@@ -6,6 +6,7 @@ class Challenge < ApplicationRecord
   belongs_to :user
   has_many   :user_challenges,  dependent: :destroy
   has_many   :users,            through: :user_challenges, source: :user
+  has_many   :activity,         as: :subject
 
   validates :user,         presence: true
   validates :name,         presence: true

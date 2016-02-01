@@ -4,8 +4,8 @@
 <div class="right">
   <span class="date"><%= l activity.event_created_at, format: :long %></span>
   <p class="description">
-    <span class="originator">You</span>
+    <span class="originator"><%= activity.originator == current_user ? 'You' : activity.originator.name %> </span>
     <span class="verb">joined</span>
-    <span class="subject">TimeTrial</span>
+    <span class="subject"><%= link_to activity.subject.name, challenge_path(activity.subject)%></span>
   </p>
 </div>

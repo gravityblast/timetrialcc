@@ -3,11 +3,11 @@ class CreateActivities < ActiveRecord::Migration[5.0]
     create_table :activities do |t|
       t.integer  "event_id"
       t.string   "event_name"
-      t.integer  "recipient_id"
+      t.uuid     "recipient_id"
       t.string   "originator_type"
-      t.integer  "originator_id"
+      t.uuid     "originator_id"
       t.string   "subject_type"
-      t.integer  "subject_id"
+      t.uuid     "subject_id"
       t.datetime "event_created_at"
       t.timestamps
     end

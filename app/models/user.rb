@@ -3,10 +3,12 @@ class User < ApplicationRecord
 
   devise :omniauthable, omniauth_providers: [:strava]
 
-  has_many :owned_challenges, dependent: :destroy, class_name: 'Challenge'
-  has_many :user_challenges,  dependent: :destroy
-  has_many :challenges,       through: :user_challenges
-  has_many :inbound_activities, class_name: 'Activity', foreign_key: :recipient_id
+  has_many :owned_challenges,     dependent: :destroy, class_name: 'Challenge'
+  has_many :user_challenges,      dependent: :destroy
+  has_many :challenges,           through: :user_challenges
+  has_many :inbound_activities,   class_name: 'Activity', foreign_key: :recipient_id
+  has_many :performed_activities, class_name: 'Activity', as: :originator
+  has_many :subjected_activities, class_name: 'Activity', as: :subject
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

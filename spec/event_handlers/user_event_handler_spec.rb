@@ -25,4 +25,3 @@ RSpec.describe UserEventHandler do
     end
   end
 end
-

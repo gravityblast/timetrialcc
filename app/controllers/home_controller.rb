@@ -8,12 +8,8 @@ class HomeController < ApplicationController
   end
 
   def show
-    @challenges = current_user.challenges
-    @activities = current_user.
-                    inbound_activities.
-                    page(params[:page]).
-                    per(30).
-                    order('event_created_at DESC').
-                    includes(:originator)
+    @challenges = current_user.challenges.includes(:user)
+    @activities = current_user.inbound_activities.page(params[:page]).
+                    per(30).order('event_created_at DESC').includes(:originator, :subject)
   end
 end

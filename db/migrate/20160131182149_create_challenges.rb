@@ -3,7 +3,7 @@ class CreateChallenges < ActiveRecord::Migration[5.0]
     enable_extension 'uuid-ossp'
 
     create_table :challenges, id: :uuid do |t|
-      t.integer :user_id,     null: false
+      t.uuid :user_id,     null: false
       t.string :name,         null: false
       t.integer :segment_id,  null: false
       t.string :segment_name, null: false

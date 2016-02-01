@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 282b2125292d8f4c721dba89510ee4360c071eb0
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git@github.com:pilu/omniauth-strava.git
   revision: 2b3ffc2b06f6026d6dfb1b915b270e55f8c75ebe
   specs:
@@ -130,9 +138,6 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
-    kaminari (0.16.3)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -269,7 +274,7 @@ DEPENDENCIES
   fabrication
   jbuilder (~> 2.0)
   jquery-rails
-  kaminari
+  kaminari!
   mini_strava (>= 0.3.1)
   omniauth-strava!
   pg

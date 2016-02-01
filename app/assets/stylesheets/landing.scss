@@ -1,0 +1,41 @@
+body.c-home.a-landing {
+  margin: 0;
+  color: #fff;
+  background-image: image-url('home-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+
+  .navbar {
+    border: none;
+    background-color: transparent;
+  }
+
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus,
+  .navbar-default .navbar-nav > li > a,
+  .navbar-default .navbar-brand {
+    background: transparent;
+    color: #fff;
+    text-shadow: 2px 1px #1a1a1a;
+  }
+
+  .welcome {
+    padding-top: 100px;
+    .title {
+      font-size: 40px;
+      letter-spacing: -0.02em;
+      line-height: 1.2em;
+      font-weight: 300;
+      text-rendering: optimizeLegibility;
+      text-shadow: 2px 2px #1a1a1a;
+      margin-bottom: 20px;
+    }
+  }
+
+  footer {
+    display: none;
+  }
+}
