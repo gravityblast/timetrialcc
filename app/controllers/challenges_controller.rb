@@ -21,6 +21,7 @@ class ChallengesController < ApplicationController
 
     client = current_user.strava_client
     segment = client.segment params[:sid]
+
     redirect_to new_challenge_path({
       sid: segment.id,
       sname: segment.name,
@@ -58,6 +59,16 @@ class ChallengesController < ApplicationController
     end
 
     render layout: false
+  end
+
+  def join
+    challenge = Challenge.find params[:id]
+    current_user.join challenge
+    flash[:success] = 'You joined this challenge'
+  rescue Challenge::ChallengeAlreadyFullException
+    flash[:warning] = 'Challenge is already full'
+  ensure
+    redirect_to challenge_path(challenge)
   end
 
   private

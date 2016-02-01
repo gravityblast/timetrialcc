@@ -17,5 +17,9 @@ Rails.application.routes.draw do
       get :new_from_segment
       get :search_segments
     end
+
+    member do
+      put :join
+    end
   end
 end

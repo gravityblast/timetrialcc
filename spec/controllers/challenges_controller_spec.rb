@@ -35,4 +35,18 @@ RSpec.describe ChallengesController, :type => :controller do
       end
     end
   end
+
+  describe 'PUT join' do
+    context 'user has not joined yet the challenge' do
+      it 'adds user to the challenge' do
+        challenge = Fabricate :challenge
+        user = Fabricate :user
+        sign_in user
+
+        put :join, params: { id: challenge }
+
+        expect(user.challenges).to eq([challenge])
+      end
+    end
+  end
 end
