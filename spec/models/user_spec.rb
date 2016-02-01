@@ -21,4 +21,14 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe 'events' do
+    context 'after creating a new user' do
+      it 'creates an event' do
+        expect do
+          Fabricate :user
+        end.to change(Event, :count).by(1)
+      end
+    end
+  end
 end

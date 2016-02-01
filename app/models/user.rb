@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include EventSourceable
+
   devise :omniauthable, omniauth_providers: [:strava]
 
   has_many :owned_challenges, dependent: :destroy, class_name: 'Challenge'
