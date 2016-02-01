@@ -130,6 +130,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -164,6 +167,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (2.16.0)
+    queue_classic (3.0.3)
+      pg (>= 0.17, < 0.19)
     rack (2.0.0.alpha)
       json
     rack-test (0.6.3)
@@ -264,11 +269,13 @@ DEPENDENCIES
   fabrication
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_strava (>= 0.3.1)
   omniauth-strava!
   pg
   pry
   puma
+  queue_classic (~> 3.0.0)
   rails (>= 5.0.0.beta1.1, < 5.1)
   rspec-rails (~> 3.0)
   sass-rails (>= 3.2)

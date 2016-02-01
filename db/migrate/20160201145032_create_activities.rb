@@ -11,5 +11,8 @@ class CreateActivities < ActiveRecord::Migration[5.0]
       t.datetime "event_created_at"
       t.timestamps
     end
+
+    add_index :activities, :recipient_id
+    add_index :activities, :event_created_at
   end
 end

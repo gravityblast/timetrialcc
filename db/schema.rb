@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160201145032) do
+ActiveRecord::Schema.define(version: 20160201153425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160201145032) do
     t.datetime "event_created_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["recipient_id"], name: "index_activities_on_recipient_id", using: :btree
   end
 
   create_table "challenges", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
@@ -51,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160201145032) do
     t.json     "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
+    t.text     "q_name",                       null: false
+    t.text     "method",                       null: false
+    t.json     "args",                         null: false
+    t.datetime "locked_at"
+    t.integer  "locked_by"
+    t.datetime "created_at", default: "now()"
+    t.index ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
   end
 
   create_table "user_challenges", force: :cascade do |t|

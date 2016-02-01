@@ -13,7 +13,8 @@ class BaseEventHandler
       event: event,
       event_name: event.name,
       subject: subject,
-      originator: originator
+      originator: originator,
+      event_created_at: event.created_at
     }
 
     activity = Activity.create! data

@@ -10,8 +10,6 @@ require File.expand_path('../../lib/mini_strava_extensions', __FILE__)
 
 module Timetrial
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
+    config.active_job.queue_adapter = :queue_classic
   end
 end

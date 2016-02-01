@@ -1,17 +1,25 @@
 <div class="row">
   <div class="col-xs-12 col-md-8">
     <h2>Activities</h2>
+
+    <ul>
+      <% @activities.each do |activity| -%>
+        <li>
+          <%= render partial: "home/activities/#{activity.action}", locals: { activity: activity } %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="col-xs-12 col-md-4">
     <h2>Challenges</h2>
 
     <ul>
-    <% @challenges.each do |challenge| -%>
-      <li>
-        <%= link_to challenge.name, challenge_path(challenge)%>
-      </li>
-    <% end %>
+      <% @challenges.each do |challenge| -%>
+        <li>
+          <%= link_to challenge.name, challenge_path(challenge)%>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

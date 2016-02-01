@@ -8,7 +8,7 @@ RSpec.describe UserEventHandler do
 
       expect(User).to receive(:find_by).with(id: user.id).and_return(user)
 
-      event = Event.new name: 'User-created', data: { id: user.id }
+      event = Event.new name: 'User-created', data: { id: user.id }, created_at: Time.now
       handler = UserEventHandler.new event
 
       expected_activity_data = {
@@ -16,7 +16,8 @@ RSpec.describe UserEventHandler do
         event: event,
         event_name: 'User-created',
         subject: user,
-        originator: user
+        originator: user,
+        event_created_at: event.created_at
       }
 
       expect(Activity).to receive(:create!).with(expected_activity_data)

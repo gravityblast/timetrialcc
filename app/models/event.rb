@@ -4,6 +4,6 @@ class Event < ApplicationRecord
   private
 
   def handle_event
-    EventDispatcherService.delay.dispatch(self)
+    EventDispatchJob.perform_later self
   end
 end
