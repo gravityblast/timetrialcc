@@ -16,23 +16,23 @@ body.c-home.a-show {
       }
       .right {
         margin-left: 80px;
-        .date {
-          font-size: 12px;
-          color: #777;
+      }
+      .date {
+        font-size: 12px;
+        color: #777;
+      }
+      .description {
+        .originator {
+          font-weight: bold;
         }
-        .description {
-          .originator {
-            font-weight: bold;
-          }
-          .verb {
+        .verb {
 
-          }
-          .subject {
-            font-weight: bold;
-          }
-          .challenge {
-            font-weight: bold;
-          }
+        }
+        .subject {
+          font-weight: bold;
+        }
+        .challenge {
+          font-weight: bold;
         }
       }
     }

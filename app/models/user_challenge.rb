@@ -3,7 +3,8 @@ class UserChallenge < ApplicationRecord
 
   belongs_to  :user
   belongs_to  :challenge
-  has_many    :activity, as: :subject
+  has_many   :subjected_activity, as: :subject, class_name: 'Activity', dependent: :destroy
+  has_many   :performed_activity, as: :subject, class_name: 'Activity', dependent: :destroy
 
   validates :user,      presence: true
   validates :challenge, presence: true
