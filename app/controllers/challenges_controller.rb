@@ -49,7 +49,7 @@ class ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     order = if @challenge.calculated?
-      'user_challenges.moving_time DESC'
+      'user_challenges.moving_time ASC NULLS LAST'
     else
       'user_challenges.created_at ASC'
     end
