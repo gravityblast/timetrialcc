@@ -129,6 +129,7 @@ GEM
       websocket-driver (>= 0.5.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    google-analytics-turbolinks (0.0.4)
     hashie (3.4.3)
     hiredis (0.6.1)
     hitimes (1.2.3)
@@ -284,6 +285,7 @@ DEPENDENCIES
   devise!
   dotenv-rails
   fabrication
+  google-analytics-turbolinks
   jbuilder (~> 2.0)
   jquery-rails
   kaminari!

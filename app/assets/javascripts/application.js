@@ -17,3 +17,4 @@
 //= require moment
 //= require widgets
 //= require_tree .
+//= require google-analytics-turbolinks

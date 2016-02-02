@@ -18,6 +18,7 @@ gem 'mini_strava', '>= 0.3.1'
 gem 'queue_classic', '~> 3.1.0'
 gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git'
 gem 'stravatt'
+gem 'google-analytics-turbolinks'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
