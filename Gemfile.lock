@@ -176,7 +176,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (2.16.0)
-    queue_classic (3.0.3)
+    queue_classic (3.1.0)
       pg (>= 0.17, < 0.19)
     rack (2.0.0.alpha)
       json
@@ -292,7 +292,7 @@ DEPENDENCIES
   pg
   pry
   puma
-  queue_classic (~> 3.0.0)
+  queue_classic (~> 3.1.0)
   rails (>= 5.0.0.beta1.1, < 5.1)
   rails_12factor
   rspec-rails (~> 3.0)

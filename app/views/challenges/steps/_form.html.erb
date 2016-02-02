@@ -20,12 +20,12 @@
 
       <div class="form-group">
         <%= f.label :name, 'Give a name to this challenge' %>
-        <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Name...' %>
+        <%= f.text_field :name, class: 'form-control input-lg', placeholder: 'Name...', required: true %>
       </div>
 
       <div class="form-group" data-widget="date-picker">
         <%= label_tag :end_time_tmp, 'Set an ending date for this challenge' %>
-        <%= text_field_tag :end_time_tmp, '', class: 'form-control input-lg date-picker-field' %>
+        <%= text_field_tag :end_time_tmp, '', class: 'form-control input-lg date-picker-field', required: true %>
         <%= f.hidden_field :end_time, class: 'timestamp-field' %>
       </div>
 

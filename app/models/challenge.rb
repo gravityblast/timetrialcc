@@ -43,4 +43,8 @@ class Challenge < ApplicationRecord
   def calculated!
     update_attribute :calculated, true
   end
+
+  def winner
+    users.where('user_challenges.moving_time IS NOT NULL').order('user_challenges DESC').first
+  end
 end

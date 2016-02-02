@@ -1,9 +1,18 @@
-<% if !@challenge.calculated? -%>
-  <div class="challenge-header" data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
-    <h3 class="countdown"></h3>
-    <p class="waiting">This challenge has already finished but the leaderboard has not been generated yet. Come back later to see who won!</p>
-  </div>
-<% end -%>
+<div class="challenge-header" data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
+  <% if @challenge.calculated? -%>
+    <p>
+      This challenge is over.
+    <% if user = @challenge.winner %>
+      The winner is <strong><%= user.name %></strong>
+    <% end %>
+    </p>
+  <% else %>
+    <div data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
+      <h3 class="countdown"></h3>
+      <p class="waiting">This challenge is already over but the leaderboard has not been generated yet. Come back later to see who won!</p>
+    </div>
+  <% end -%>
+</div>
 
 <div class="col-xs-12">
   <h1><%= @challenge.name %></h1>
