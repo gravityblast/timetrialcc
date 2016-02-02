@@ -45,6 +45,6 @@ class Challenge < ApplicationRecord
   end
 
   def winner
-    users.where('user_challenges.moving_time IS NOT NULL').order('user_challenges DESC').first
+    users.where('user_challenges.moving_time IS NOT NULL').order('user_challenges.moving_time ASC').first
   end
 end
