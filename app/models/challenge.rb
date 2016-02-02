@@ -36,4 +36,8 @@ class Challenge < ApplicationRecord
   def end_time_timestamp
     end_time ? end_time.to_f * 1000 : 0
   end
+
+  def calculated!
+    update_attribute :calculated, true
+  end
 end

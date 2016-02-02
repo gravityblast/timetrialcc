@@ -47,5 +47,9 @@ Fabricator :user do
     Fabricate.sequence(:uid) { |i| i }
   end
 
+  access_token do
+    Fabricate.sequence(:access_token) { |i| "token-#{i}" }
+  end
+
   provider :strava
 end

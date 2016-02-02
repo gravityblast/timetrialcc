@@ -28,6 +28,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'mini_strava', '>= 0.3.1'
 gem 'queue_classic', '~> 3.0.0'
 gem 'kaminari', git: 'git://github.com/amatsuda/kaminari.git'
+gem 'stravatt'
 
 
 # Use ActiveModel has_secure_password
