@@ -10,6 +10,18 @@ body.c-challenges.a-show {
     }
   }
 
+  .share-box {
+    margin-bottom: 10px;
+    .text {
+      font-weight: bold;
+      margin-bottom: 0;
+    }
+    input.url {
+      width: 100%;
+      padding: 5px;
+    }
+  }
+
   .members {
     list-style-type: none;
     padding: 0;
