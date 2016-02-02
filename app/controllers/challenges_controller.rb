@@ -46,7 +46,13 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    @challenge = Challenge.includes(:users).find(params[:id])
+    @challenge = Challenge.find(params[:id])
+    order = if @challenge.calculated?
+      'user_challenges.moving_time DESC'
+    else
+      'user_challenges.created_at ASC'
+    end
+    @user_challenges = @challenge.user_challenges.includes(:user).order(order)
   end
 
   def search_segments

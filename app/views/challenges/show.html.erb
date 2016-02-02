@@ -22,20 +22,24 @@
     <h3 class="sidebar-title"><%= @challenge.segment_name %></h3>
 
     <ul class="members">
-      <% @challenge.users.each do |user| -%>
+      <% @challenge.user_challenges.each do |uc| -%>
         <li class="user">
-          <img src="<%= user.profile_picture_url %>" class="avatar pull-left" />
-          <span class="name"><%= user.name %></span>
-          <span class="time">Time: --:--</span>
+          <img src="<%= uc.user.profile_picture_url %>" class="avatar pull-left" />
+          <span class="name"><%= uc.user.name %></span>
+            <span class="time">Time: <%= formatted_moving_time uc.moving_time %> </span>
           <hr />
         </li>
       <% end %>
     </ul>
 
-    <% if !current_user || !current_user.joined(@challenge) %>
+    <% if !@challenge.calculated? && (!current_user || !current_user.joined(@challenge)) %>
       <p>
-        <%= link_to 'Join Challenge', join_challenge_path(@challenge), method: :put, class: 'btn btn-primary btn-lg' %>
+        <%= link_to 'Join Challenge', join_challenge_path(@challenge, return_to: challenge_path(@challenge)), method: :put, class: 'btn btn-primary btn-lg' %>
       </p>
     <% end -%>
+
+    <a href="https://www.strava.com/segments/<%= @challenge.segment_id %>" target="_blank">
+      <small>Check this segment on Strava</small>
+    </a>
   </div>
 </div>

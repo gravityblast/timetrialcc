@@ -11,7 +11,9 @@ class ApplicationController < ActionController::Base
   def authenticate_strava_user!
     unless current_user
       if request.get?
-        store_attempted_url
+        session[:user_return_to] = request.original_fullpath
+      elsif path = params[:return_to].presence
+        session[:user_return_to] = path
       end
       redirect_to user_omniauth_authorize_path(provider: :strava)
     end
@@ -24,6 +26,5 @@ class ApplicationController < ActionController::Base
   end
 
   def store_attempted_url
-    session[:user_return_to] = request.original_fullpath
   end
 end

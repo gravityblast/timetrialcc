@@ -21,7 +21,6 @@ class ChallengeCalculatorService
   private
 
   def update_challenge! leaderboard
-    require 'pry'; binding.pry;
     leaderboard.each do |result|
       uc = UserChallenge.joins(:challenge).where('user_challenges.user_id = ? AND challenges.segment_id = ?', result[:user_id], challenge.segment_id).first
       uc.update! moving_time: result[:effort].moving_time if uc
@@ -30,6 +29,6 @@ class ChallengeCalculatorService
   end
 
   def timetrial
-    @timetrial ||= StravaTT.new challenge.segment_id, challenge.created_at, challenge.end_time
+    @timetrial ||= StravaTT.new challenge.segment_id, start_time, end_time
   end
 end
