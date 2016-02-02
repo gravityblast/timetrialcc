@@ -3,6 +3,13 @@ body.c-challenges.a-show {
     text-align: center;
   }
 
+  .challenge-header {
+    .waiting {
+      display: none;
+      text-align: center;
+    }
+  }
+
   .members {
     list-style-type: none;
     padding: 0;
