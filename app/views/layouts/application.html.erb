@@ -46,7 +46,9 @@
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
               <li>
-                <%= link_to 'New Challenge', new_challenge_path %>
+                <p class="navbar-btn">
+                  <%= link_to 'New Challenge', new_challenge_path, class: 'btn btn-primary' %>
+                </p>
               </li>
               <li>
                 <%= link_to current_user.name.presence || 'Anonymous', home_path %>
