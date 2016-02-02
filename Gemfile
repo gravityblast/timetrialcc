@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'puma'
 
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
-gem 'omniauth-strava', git: 'git@github.com:pilu/omniauth-strava.git'
+gem 'omniauth-strava', git: 'https://github.com/pilu/omniauth-strava.git'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'mini_strava', '>= 0.3.1'

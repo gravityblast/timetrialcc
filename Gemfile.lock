@@ -7,7 +7,7 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
-  remote: git@github.com:pilu/omniauth-strava.git
+  remote: https://github.com/pilu/omniauth-strava.git
   revision: 2b3ffc2b06f6026d6dfb1b915b270e55f8c75ebe
   specs:
     omniauth-strava (0.0.7)
