@@ -39,6 +39,7 @@ class ChallengesController < ApplicationController
     @challenge = current_user.owned_challenges.build attrs
     if @challenge.save
       @challenge.users << current_user
+      CalculateLeaderboardJob.set(wait_until: @challenge.end_time).perform_later @challenge
       redirect_to challenge_path(@challenge)
     else
       render :new
