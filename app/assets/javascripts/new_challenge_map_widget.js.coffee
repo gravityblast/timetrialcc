@@ -6,8 +6,9 @@ class NewChallengeMapWidget extends BaseWidget
     @initHandlers()
 
   initMap: ->
+    center = new google.maps.LatLng 51.531447323113106, -0.1547113037108816
     @map = new google.maps.Map document.getElementById('map'),
-      center:    new google.maps.LatLng(51.531447323113106, -0.1547113037108816),
+      center:    center,
       zoom:      14,
       maxZoom:   17,
       disableDefaultUI: true,
@@ -19,7 +20,12 @@ class NewChallengeMapWidget extends BaseWidget
           { visibility: 'off' }
         ]
       }]
-    window.map = @map
+
+    if 'geolocation' of navigator
+      navigator.geolocation.getCurrentPosition (position) =>
+        coords = position.coords
+        center = new google.maps.LatLng coords.latitude, coords.longitude
+        @map.setCenter center
 
   initSearchField: ->
     mapSearch = document.getElementById "map-search"
