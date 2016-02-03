@@ -1,24 +1,24 @@
 ## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the source code of [TimeTrial.cc](http://timetrial.cc).
 
-Things you may want to cover:
+## How does it work?
 
-* Ruby version
+* Login with your Strava account.
+* Start a new challenge.
+* Select a segment you love.
+* Set a challenge end time.
+* Share your challenge and wait for people to join.
+* The system records the first attempt of each user who joined.
+* When the challenge is over you can see who has won.
 
-* System dependencies
+## Thechnologies and patterns used
 
-* Configuration
+* Rails 5
+* Coffeescript
+* Event sourcing to tracks user actions
+* A kind of **CQRS** adapted to ActiveRecord to genererate timelines for users using the **Fan-out** pattern.
 
-* Database creation
+## Author
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Andrea Franz](http://gravityblast.com)

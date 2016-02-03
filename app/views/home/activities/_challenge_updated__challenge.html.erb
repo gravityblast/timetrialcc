@@ -2,8 +2,7 @@
   <span class="date"><%= l activity.event_created_at, format: :long %></span>
   <p class="description">
     <span class="originator">Your challenge <%= link_to activity.subject.name, challenge_path(activity.subject) %></span>
-    <span class="verb">is over. Check <%= link_to 'who won', challenge_path(activity.subject) %>!</span>
-
+    <span class="verb">is over. Check <%= link_to 'who has won', challenge_path(activity.subject) %>!</span>
   </p>
 </div>
 
