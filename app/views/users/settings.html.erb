@@ -1,0 +1,21 @@
+<div class="col-xs-12">
+  <p>
+  You are logged in as <strong><%= current_user.name %></strong> (<%= current_user.email %>).
+  </p>
+
+  <p>
+    If you want you can logout and <strong>permanently</strong> delete you account clicking the following button.
+  </p>
+  <p>
+    Keep in mind that <strong>there is no way do undo this action</strong>. Here what will happen:
+    <ul>
+      <li>You will be removed from all the challenges you joined.</li>
+      <li>Your challenges moving time data will be <strong>permanently deleted</strong>.</li>
+      <li>All challenges created by you will be <strong>permanently deleted</strong>.</li>
+      <li>Your account with your email, name, and strava API access token will be <strong>permanently deleted<strong>.</li>
+    </ul>
+  </p>
+  <p>
+    <%= link_to 'Delete my account', user_account_path, method: :delete, class: 'btn btn-lg btn-danger', data: { confirm: "Are you sure you want to permanently delete your account?"} %>
+  </p>
+</div>

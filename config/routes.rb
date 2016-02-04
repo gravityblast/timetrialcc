@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   root to: 'home#landing'
 
-  get '/home', to: 'home#show', as: :home
+  get     '/home',      to: 'home#show',      as: :home
+  get     '/settings',  to: 'users#settings', as: :user_settings
+  delete  '/account',   to: 'users#destroy',  as: :user_account
 
   resources :challenges do
     collection do
