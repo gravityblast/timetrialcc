@@ -8,8 +8,10 @@ Bundler.require(*Rails.groups)
 
 require File.expand_path('../../lib/mini_strava_extensions', __FILE__)
 
-class RailsStdoutLogging::StdoutLogger
-  def broadcast_messages *args; end
+if Object.const_defined?('RailsStdoutLogging') && RailsStdoutLogging.const_defined?('StdoutLogger')
+  class RailsStdoutLogging::StdoutLogger
+    def broadcast_messages *args; end
+  end
 end
 
 module Timetrial
