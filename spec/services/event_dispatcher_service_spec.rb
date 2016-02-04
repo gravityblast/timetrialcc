@@ -18,6 +18,15 @@ RSpec.describe EventDispatcherService do
       dispatcher = EventDispatcherService.new event
       dispatcher.dispatch
     end
+
+    it 'destroy the event after dispatching it' do
+      event = Event.create name: 'tmp', data: { foo: :bar }
+      events_count = Event.count
+
+      expect do
+        EventDispatcherService.dispatch event
+      end.to change(Event, :count).by(-1)
+    end
   end
 end
 

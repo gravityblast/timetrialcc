@@ -1,4 +1,6 @@
 class EventDispatcherService
+  attr_reader :event
+
   def initialize event
     @event = event
   end
@@ -11,6 +13,8 @@ class EventDispatcherService
       handler = klass.new @event
       handler.public_send action if handler.respond_to? action
     end
+
+    event.destroy if event && event.persisted?
   end
 
   def self.dispatch event
