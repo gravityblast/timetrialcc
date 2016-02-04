@@ -1,0 +1,24 @@
+<div id="modal-privacy" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Privacy</h4>
+      </div>
+      <div class="modal-body">
+        <p>When you sign-in for the first time on the platform, a new account will be generated with your email and name.</p>
+        <p>
+          After the deadline, a background process will check all activitie between the challenge creation and the deadlines made by those who joined.
+          It will look for the first effort performed on the segment.<br />
+          If found, the effort moving time will be saved for that challenge, nothing else is stored. That moving time will be used later to create the challenge leaderbord.
+        </p>
+
+        <p>
+          You can delete your account and all your data at any point by going to the user settings page. If you are logged in, you will see the settings link in the top-right corner of the page.
+        </p>
+        <%= render partial: 'shared/account_delete_description' %>
+      </div>
+    </div>
+  </div>
+</div>
+

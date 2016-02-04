@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="col-xs-12">
-    <h1>New Challenge - Select a segment</h1>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>New Challenge - Select a segment</h1>
+    </div>
 
-  <% if @challenge.segment_id.nil? -%>
-    <%= render partial: 'challenges/steps/segment' %>
-  <% else -%>
-    <%= render partial: 'challenges/steps/form' %>
-  <% end %>
+    <% if @challenge.segment_id.nil? -%>
+      <%= render partial: 'challenges/steps/segment' %>
+    <% else -%>
+      <%= render partial: 'challenges/steps/form' %>
+    <% end %>
+  </div>
 </div>

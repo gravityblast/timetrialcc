@@ -1,6 +1,21 @@
-<div class="col-xs-12 text-center welcome">
-  <h2 class="title">Challenge your friends with a segment TimeTrial</h2>
-  <a href="<%= user_omniauth_authorize_path(provider: :strava) %>">
-    <img src="<%= image_path 'btn-login-strava-2x.png' %>" />
-  </a>
+<div class="sections">
+  <section id="home" class="welcome text-center">
+    <h2 class="title">Challenge your friends with a segment TimeTrial</h2>
+    <a href="<%= user_omniauth_authorize_path(provider: :strava) %>">
+      <img src="<%= image_path 'btn-login-strava-2x.png' %>" />
+    </a>
+  </section>
+
+  <section id="about" class="about text-center">
+    <p class="text">Select a segment you love, invite people, ride or run it!</p>
+    <a href="#" class="more btn btn-primary" data-toggle="modal" data-target="#modal-about">Learn more</a>
+  </section>
+
+  <section id="privacy" class="privacy text-center">
+    <p class="text">The access to your Strava account will only be used to retrieve the performance data on the challenge segment.</p>
+    <a href="#" class="more btn btn-primary" data-toggle="modal" data-target="#modal-privacy">Learn more</a>
+  </section>
 </div>
+
+<%= render partial: 'home/modals/about' %>
+<%= render partial: 'home/modals/privacy' %>

@@ -1,41 +1,42 @@
-<div class="challenge-header" data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
-  <% if @challenge.calculated? -%>
-    <p>
+<div class="container">
+  <div class="challenge-header" data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
+    <% if @challenge.calculated? -%>
+      <p>
       This challenge is over.
-    <% if user = @challenge.winner %>
-      The winner is <strong><%= user.name %></strong>
-    <% end %>
-    </p>
-  <% else %>
-    <div data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
-      <h3 class="countdown"></h3>
-      <p class="waiting">This challenge is already over but the leaderboard has not been generated yet. Come back later to see who won!</p>
-    </div>
-  <% end -%>
-</div>
+      <% if user = @challenge.winner %>
+        The winner is <strong><%= user.name %></strong>
+      <% end %>
+      </p>
+    <% else %>
+      <div data-widget="countdown" data-widget-time="<%= @challenge.end_time %>">
+        <h3 class="countdown"></h3>
+        <p class="waiting">This challenge is already over but the leaderboard has not been generated yet. Come back later to see who won!</p>
+      </div>
+    <% end -%>
+  </div>
 
-<div class="col-xs-12">
-  <h1><%= @challenge.name %></h1>
-</div>
+  <div class="col-xs-12">
+    <h1><%= @challenge.name %></h1>
+  </div>
 
-<div class="step step-segment" data-widget="challenge-map-detail" data-widget-polyline="<%= @challenge.segment_polyline %>" data-widget-start_latlng="<%= @challenge.segment_start_latlng %>" data-widget-end_latlng="<%= @challenge.segment_end_latlng %>">
-  <div class="col-xs-12 col-md-8">
-    <div class="share-box">
-      <p class="text">Invite someone to this challenge by sharing this link:</p>
-      <input type="text" class="url" value="<%= challenge_url @challenge %>" />
-    </div>
-    <div class="map-container">
-      <div class="map-content">
-        <div id="map"></div>
+  <div class="step step-segment" data-widget="challenge-map-detail" data-widget-polyline="<%= @challenge.segment_polyline %>" data-widget-start_latlng="<%= @challenge.segment_start_latlng %>" data-widget-end_latlng="<%= @challenge.segment_end_latlng %>">
+    <div class="col-xs-12 col-md-8">
+      <div class="share-box">
+        <p class="text">Invite someone to this challenge by sharing this link:</p>
+        <input type="text" class="url" value="<%= challenge_url @challenge %>" />
+      </div>
+      <div class="map-container">
+        <div class="map-content">
+          <div id="map"></div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-xs-12 col-md-4">
-    <h3 class="sidebar-title"><%= @challenge.segment_name %></h3>
+    <div class="col-xs-12 col-md-4">
+      <h3 class="sidebar-title"><%= @challenge.segment_name %></h3>
 
-    <ul class="members">
-      <% @user_challenges.each_with_index do |uc, index| -%>
-        <li class="user">
+      <ul class="members">
+        <% @user_challenges.each_with_index do |uc, index| -%>
+          <li class="user">
           <img src="<%= uc.user.profile_picture_url %>" class="avatar pull-left" />
           <span class="name">
             <% if @challenge.calculated? -%>
@@ -45,20 +46,21 @@
             <% end -%>
             <%= uc.user.name %>
           </span>
-            <span class="time">Time: <%= formatted_moving_time uc.moving_time %> </span>
+          <span class="time">Time: <%= formatted_moving_time uc.moving_time %> </span>
           <hr />
-        </li>
-      <% end %>
-    </ul>
+          </li>
+        <% end %>
+      </ul>
 
-    <% if !@challenge.calculated? && (!current_user || !current_user.joined(@challenge)) %>
-      <p>
+      <% if !@challenge.calculated? && (!current_user || !current_user.joined(@challenge)) %>
+        <p>
         <%= link_to 'Join Challenge', join_challenge_path(@challenge, return_to: challenge_path(@challenge)), method: :put, class: 'btn btn-primary btn-lg' %>
-      </p>
-    <% end -%>
+        </p>
+      <% end -%>
 
-    <a href="https://www.strava.com/segments/<%= @challenge.segment_id %>" target="_blank">
-      <small>Check this segment on Strava</small>
-    </a>
+      <a href="https://www.strava.com/segments/<%= @challenge.segment_id %>" target="_blank">
+        <small>Check this segment on Strava</small>
+      </a>
+    </div>
   </div>
 </div>
