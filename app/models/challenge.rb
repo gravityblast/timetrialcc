@@ -9,7 +9,7 @@ class Challenge < ApplicationRecord
   has_many   :user_challenges,    dependent: :destroy
   has_many   :users,              through: :user_challenges, source: :user
   has_many   :subjected_activity, as: :subject, class_name: 'Activity', dependent: :destroy
-  has_many   :performed_activity, as: :subject, class_name: 'Activity', dependent: :destroy
+  has_many   :performed_activity, as: :originator, class_name: 'Activity', dependent: :destroy
 
   validates :user,         presence: true
   validates :name,         presence: true
