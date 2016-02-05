@@ -40,6 +40,7 @@ class ChallengesController < ApplicationController
     if @challenge.save
       @challenge.users << current_user
       CalculateLeaderboardJob.set(wait_until: @challenge.end_time).perform_later @challenge
+      flash_message :success, 'Challenge created successfully. Ask your friends to join!'
       redirect_to challenge_path(@challenge)
     else
       render :new
@@ -71,9 +72,9 @@ class ChallengesController < ApplicationController
   def join
     challenge = Challenge.find params[:id]
     current_user.join challenge
-    flash[:success] = 'You joined this challenge'
+    flash_message :success, 'You joined this challenge'
   rescue Challenge::ChallengeAlreadyFullException
-    flash[:warning] = 'Challenge is already full'
+    flash_message :warning, 'Challenge is already full'
   ensure
     redirect_to challenge_path(challenge)
   end

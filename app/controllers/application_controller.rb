@@ -25,6 +25,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def store_attempted_url
+  def flash_message type, text, now: false
+    f = now ? flash.now : flash
+    f[:messages] ||= {}
+    f[:messages][type] = text
   end
 end

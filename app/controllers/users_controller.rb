@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy!
-    flash[:success] = 'You account has been permanently deleted.'
+    flash_message :success, 'You account has been permanently deleted.'
     redirect_to root_path
   end
 end

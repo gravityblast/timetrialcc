@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def each_flash_message
+    (flash[:messages] || {}).each do |k, v|
+      yield k.to_s, v
+    end
+  end
+
   def body_class_name
     "c-#{controller_path.parameterize} a-#{params[:action]}"
   end
