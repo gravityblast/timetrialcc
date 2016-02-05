@@ -9,6 +9,24 @@ module ApplicationHelper
     "c-#{controller_path.parameterize} a-#{params[:action]}"
   end
 
+  def trackable_events
+    (flash['events'] || []).map do |event|
+      {
+        c: event['category'],
+        a: event['action'],
+        l: event['label'],
+        v: event['value']
+      }
+    end
+  end
+
+  def body_data
+    {
+      widget: 'events-tracker',
+      events: trackable_events
+    }
+  end
+
   def flash_to_bootstrap k
     case k
     when 'success'

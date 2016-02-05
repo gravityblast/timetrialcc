@@ -3,7 +3,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :redirect_to_previous_attempted_url
 
   def strava
-    user = User.from_omniauth request.env['omniauth.auth']
+    user, is_new_user = User.from_omniauth request.env['omniauth.auth']
+    event_action = is_new_user ? :signup : :login
+    track_event category: :user, action: event_action, label: user.id
 
     if user.persisted?
       sign_in_and_redirect user, event: :authentication

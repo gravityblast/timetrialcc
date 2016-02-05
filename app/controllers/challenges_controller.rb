@@ -10,6 +10,9 @@ class ChallengesController < ApplicationController
       segment_end_latlng: params[:sell]
     }
 
+    event_action = attrs[:segment_id].present? ? :new_step_2 : :new_step_1
+    track_event category: :challenge, action: event_action, now: true
+
     @challenge = current_user.challenges.build attrs
   end
 
@@ -41,6 +44,7 @@ class ChallengesController < ApplicationController
       @challenge.users << current_user
       CalculateLeaderboardJob.set(wait_until: @challenge.end_time).perform_later @challenge
       flash_message :success, 'Challenge created successfully. Ask your friends to join!'
+      track_event category: :challenge, action: :create, label: @challenge.id
       redirect_to challenge_path(@challenge)
     else
       render :new
@@ -73,6 +77,7 @@ class ChallengesController < ApplicationController
     challenge = Challenge.find params[:id]
     current_user.join challenge
     flash_message :success, 'You joined this challenge'
+    track_event category: :challenge, action: :join, label: challenge.id, value: 1
   rescue Challenge::ChallengeAlreadyFullException
     flash_message :warning, 'Challenge is already full'
   ensure

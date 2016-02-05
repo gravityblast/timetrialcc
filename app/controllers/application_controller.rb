@@ -30,4 +30,15 @@ class ApplicationController < ActionController::Base
     f[:messages] ||= {}
     f[:messages][type] = text
   end
+
+  def track_event category:, action: , label: nil, value: nil, now: false
+    f = now ? flash.now : flash
+    f[:events] ||= []
+    f[:events] << {
+      'category'  => category,
+      'action'    => action,
+      'label'     => label,
+      'value'     => value
+    }
+  end
 end

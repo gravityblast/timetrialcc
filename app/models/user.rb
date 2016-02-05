@@ -11,12 +11,15 @@ class User < ApplicationRecord
   has_many :subjected_activities, class_name: 'Activity', as: :subject, dependent: :destroy
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    is_new_user = false
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      is_new_user = user.new_record?
       user.access_token = auth.credentials.token
       user.email = auth.info.email
       user.name = auth.info.name
       user.profile_picture_url = auth.info.profile
     end
+    [user, is_new_user]
   end
 
   def join challenge
